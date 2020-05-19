@@ -24,7 +24,7 @@ class Card:
 
 
     def displayCards(self):
-        print("Card ID:",self.id,"/nNAME",self.name,"/n")
+        print("\t\tCard ID:",self.Id,"/nNAME",self.name,"/n")
         if isAssUser:
             user.displayUser()
 

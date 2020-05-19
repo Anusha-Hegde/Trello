@@ -23,7 +23,7 @@ def main():
         if inp[0] == "BOARD":
 
             if inp[1] == "CREATE":
-                print("board created successfully\t",createBoard(inp[2]))
+                print("board created successfully = ",createBoard(inp[2]))
                 
 
             elif inp[1] == "DELETE":
@@ -34,24 +34,27 @@ def main():
                     print("board not found")
                 
 
-            elif inp[1] == "name":
-                boards[inp[1]].setName = inp[3]
+            elif inp[2] == "name":
+                boards[inp[1]].setName(inp[3])
+                print("name changed to",inp[3])
                 
 
-            elif inp[1] == "privacy":
-                boards[inp[1]].setPrivacy = inp[3]
+            elif inp[2] == "privacy":
+                boards[inp[1]].setPrivacy(inp[3])
+                print("privacy changed to",inp[3])
  
             elif inp[2] == "ADD_MEMBER":
                 if inp[1] in boards:
                     boards[inp[1]].addMember(inp[3])
-                else : print("board not exists")
+                else : print("board does not exist")
                 
 
             elif inp[2] == "REMOVE_MEMBER":
                 if inp[1] in boards:
                     boards[inp[1]].removeMember(inp[3])
-                else : print("board not exists")
+                else : print("board does not exist")
                 
+            else: print("enter valid command")
         
 
 
@@ -65,6 +68,7 @@ def main():
 
                 if boardId in boards:  #if board exists
                     print("list created",boards[boardId].createList(listName))
+                else: print("Board does not exist")
                     
 
 
@@ -98,8 +102,8 @@ def main():
             if inp[1] == "CREATE":
                 k=0
                 for i in boards:
-                    if i.isList(inp[1]):
-                        print("card created",i.list[inp[1]].createCard(inp[3]))
+                    if boards[i].isList(inp[2]):
+                        print("card created",boards[i].list[inp[2]].createCard(inp[3]))
                         break
                 if not k:
                     print("board or list not found\n")

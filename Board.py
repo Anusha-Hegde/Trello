@@ -8,7 +8,7 @@ class Board():
         self.id = id  
         self.name = ""
         self.privacy = "PUBLIC"
-        self.url = ""
+        self.url = "trello.com/"+id     
         self.list={}
         self.members=[]
 
@@ -36,8 +36,8 @@ class Board():
 
 
     def isCard(self,cardId) :    #check if card exists and return listID
-        for i in list: 
-            if list[i].issCard(cardId): return i
+        for i in self.list: 
+            if self.list[i].issCard(cardId): return i
         return -1
 
 
@@ -58,8 +58,7 @@ class Board():
 
 
     def displayBoard(self):
-        print("Board ID:",self.id,"\tNAME:",self.name,"\tURL",self.url,"\tLIST:\n")
-        if list:
+        print("Board ID:",self.id,"\tNAME:",self.name,"\tURL:",self.url,"\tPrivacy:",self.privacy)
+        if self.list:
             for i in self.list:
-                print("/n",i,"/n")
-                list[i].displayList()
+                self.list[i].displayList()
