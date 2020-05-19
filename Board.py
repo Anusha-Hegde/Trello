@@ -1,7 +1,7 @@
 from Lists import Lists 
 from User import User
 
-import Random
+class Random(): pass 
 
 class Board():
     def __init__(self,id):

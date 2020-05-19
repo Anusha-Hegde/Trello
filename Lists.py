@@ -1,6 +1,6 @@
 from Card import Card
 
-import Random
+class Random(): pass
 
 class Lists:
 

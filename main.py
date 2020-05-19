@@ -1,6 +1,8 @@
 from Board import Board
 from itertools import count
-import Random
+
+
+class Random(): pass
 
 print("Enter commands\n")
 boards={}   #dictionary of board id's and objects
