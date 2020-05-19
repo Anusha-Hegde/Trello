@@ -13,7 +13,7 @@ class Lists:
 
 
     def createCard(self,cardName):
-        cardId = str(id(Random))
+        cardId = str(id(Random()))
         c = Card(cardId)
         c.setName(cardName)
         cards[cardId] = c

@@ -6,7 +6,7 @@ print("Enter commands\n")
 boards={}   #dictionary of board id's and objects
 
 def createBoard(bName):
-    Id = str(id(Random))
+    Id = str(id(Random()))
     b = Board(Id)
     b.setName(bName)
     boards[Id] = b

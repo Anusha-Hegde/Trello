@@ -24,10 +24,10 @@ class Board():
 
     
     def createList(self,listName):
-        listId = str(id(Random))
+        listId = str(id(Random()))
         l = Lists(listId)
         l.setName(listName)
-        list[listId] = l
+        self.list[listId] = l
         return listId
 
 
@@ -62,4 +62,4 @@ class Board():
         if list:
             for i in self.list:
                 print("/n",i,"/n")
-                i.displayList()
+                list[i].displayList()
