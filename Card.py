@@ -1,4 +1,4 @@
-import User
+from User import User
 
 class Card:
 
@@ -12,7 +12,7 @@ class Card:
         self.name = name
 
     def isAssUser(self) -> bool:
-        if self.user is None:
+        if not self.user:
             return False  
         return True
 
@@ -24,9 +24,6 @@ class Card:
 
 
     def displayCards(self):
-        print("\t\tCard ID:",self.Id,"/nNAME",self.name,"/n")
-        if isAssUser:
-            user.displayUser()
-
-
-            
+        print("\t\tCard ID:",self.Id,"\tNAME",self.name)
+        if self.isAssUser():
+            self.user.displayUser()

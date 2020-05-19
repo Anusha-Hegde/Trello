@@ -5,4 +5,7 @@ class User:
         self.name = ""
         self.email = ""
 
+    def displayUser(self):
+        print("\t\t\tUserId:"+self.Id)
+
     

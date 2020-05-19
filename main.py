@@ -75,8 +75,8 @@ def main():
             elif inp[1] == "DELETE":
                 k = 0
                 for i in boards:
-                    if i.isList(inp[2]):
-                        i.deleteList(inp[2])
+                    if boards[i].isList(inp[2]):
+                        boards[i].deleteList(inp[2])
                         k = 1
                         break
                 if not k:
@@ -86,8 +86,8 @@ def main():
             elif inp[2] == "name":
                 k = 0
                 for i in boards:
-                    if i.isList(inp[1]):
-                        i.list[inp[1]].setName(inp[3])
+                    if boards[i].isList(inp[1]):
+                        boards[i].list[inp[1]].setName(inp[3])
                         k = 1
                         break
                 if not k:
@@ -104,6 +104,7 @@ def main():
                 for i in boards:
                     if boards[i].isList(inp[2]):
                         print("card created",boards[i].list[inp[2]].createCard(inp[3]))
+                        k=1
                         break
                 if not k:
                     print("board or list not found\n")
@@ -114,8 +115,9 @@ def main():
                 k=0
                 for i in boards:
                     if boards[i].isCard(inp[2]) != -1:
-                        k = boards[i].isCard
-                        i.list[k].deleteCard(inp[2])    #i:boardID, k:listID
+                        listId = boards[i].isCard
+                        boards[i].list[listId].deleteCard(inp[2])    #i:boardID, k:listID
+                        k=1
                         break
                 if not k:
                     print("board or list not found\n")
@@ -126,25 +128,29 @@ def main():
                 k = 0
                 for i in boards:
                     if boards[i].isCard(cardId) != -1:
-                        listId = boards[i].isCard
+                        listId = boards[i].isCard(cardId)
+                        # print(listId)
+                        k=1
                         break
                 if not k:
                     print("invalid cardId\n")
+                    continue
                     
                 if inp[2] == "ASSIGN":
-                    i.list[listId].cards[cardId].assUser(inp[3])
+                    boards[i].list[listId].cards[cardId].assUser(inp[3])
                 
                 elif inp[2] == "UNASSIGN":
-                    i.list[listId].cards[cardId].unAssUser()
+                    boards[i].list[listId].cards[cardId].unAssUser()
 
                 else:       #"MOVE:"
-                    cardObj = i.list[listId].cards[cardId]   #get the card object
-                    i.list[listId].deleteCard(cardId)    #delete card object
+                    cardObj = boards[i].list[listId].cards[cardId]   #get the card object
+                    boards[i].list[listId].deleteCard(cardId)    #delete card object
                     targList = inp[3]
                     k = 0
                     for j in boards:
                         if boards[j].isList(targList):
-                            boards[j].list[targList].cards[cardId]=cardObj      #move card to target 
+                            boards[j].list[targList].cards[cardId]=cardObj  #move card to target
+                            k=1       
                             break
                     if not k:
                         print("board or list not found\n")
@@ -157,7 +163,7 @@ def main():
 
             if len(inp) == 1:
                 if not boards:
-                    print("nothing to dispay")
+                    print("nothing to display")
                 else:
                     for i in boards:
                         boards[i].displayBoard()
@@ -174,10 +180,12 @@ def main():
                         break
             
             elif inp[1] == "CARD":
+                k=0
                 for i in boards:
                     if boards[i].isCard(cardId) != -1:
-                        k = boards[i].isCard
-                        i.list[k].cards[inp[2]].displayCards()
+                        listId = boards[i].isCard(cardId)
+                        boards[i].list[k].cards[inp[2]].displayCards()
+                        k=1
                         break
 
 

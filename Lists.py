@@ -41,7 +41,7 @@ class Lists:
 
 
     def displayList(self):
-        print("\tList ID:",self.Id,"\nNAME",self.name)
+        print("\tList ID:",self.Id,"\tNAME:",self.name)
         if self.cards:
             for i in self.cards:
                 self.cards[i].displayCards()

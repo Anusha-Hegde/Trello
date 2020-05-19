@@ -7,7 +7,7 @@ class Board():
     def __init__(self,id):
         self.id = id  
         self.name = ""
-        self.privacy = "PUBLIC"
+        self.privacy = "public"
         self.url = "trello.com/"+id     
         self.list={}
         self.members=[]
@@ -35,7 +35,7 @@ class Board():
         if listId in self.list: return True
 
 
-    def isCard(self,cardId) :    #check if card exists and return listID
+    def isCard(self,cardId):    #check if card exists and return listID
         for i in self.list: 
             if self.list[i].issCard(cardId): return i
         return -1
@@ -52,13 +52,18 @@ class Board():
 
     
     def removeMember(self,userId):
-        if User(userId) in self.members:
-            self.members.remove(User(userId))
-        else: print("not a member")
+        for i in self.members:
+            if userId == i.Id:
+                self.members.remove(i)
+                return
+        print("not a member")
 
 
     def displayBoard(self):
-        print("Board ID:",self.id,"\tNAME:",self.name,"\tURL:",self.url,"\tPrivacy:",self.privacy)
+        print("Board ID:",self.id,"\tNAME:",self.name,"\tURL:",self.url,"\tPrivacy:",self.privacy,"\tMembers:\n")
+        if self.members:
+            for i in self.members:
+                i.displayUser()
         if self.list:
             for i in self.list:
                 self.list[i].displayList()
