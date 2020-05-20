@@ -17,9 +17,15 @@ class Card:
         return True
 
     def assUser(self,userId):
-        self.user = User(userId)
+        if not self.user:
+            self.user = User(userId)
+            return
+        print("user exists")
 
     def unAssUser(self):
+        if not self.user:
+            print("user not exists")
+            return
         self.user = None
 
 

@@ -15,7 +15,8 @@ def createBoard(bName):
     return Id 
 
 def main():
-   
+
+
     while(1):
         inp = input().split(' ')
 

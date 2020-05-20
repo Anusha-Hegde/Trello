@@ -15,6 +15,13 @@ class Board():
 
 
     def setPrivacy(self,privacy):
+        '''
+        sets board's privacy
+        params:
+            privacy(str): new privacy
+        returns: 
+            None
+        '''        
         self.privacy = privacy
 
 
@@ -24,6 +31,9 @@ class Board():
 
     
     def createList(self,listName):
+        '''
+        
+        '''
         listId = str(id(Random()))
         l = Lists(listId)
         l.setName(listName)
