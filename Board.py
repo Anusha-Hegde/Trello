@@ -52,8 +52,8 @@ class Board():
 
 
     def deleteList(self,listId):
-        if listId in list:
-            del list[listId]
+        if listId in self.list:
+            del self.list[listId]
 
 
 

@@ -7,7 +7,6 @@ class Lists:
     def __init__(self,Id):
         self.Id = Id
         self.name = ""
-        self.description = ""
         self.cards={}
 
 
@@ -27,10 +26,6 @@ class Lists:
 
     def setName(self,name):
         self.name = name
-
-
-    def setDescription(self,desc):
-        self.description = desc
 
 
     def issCard(self,cardId) -> bool:       #return true for a card

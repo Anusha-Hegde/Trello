@@ -28,7 +28,7 @@ def main():
                 
 
             elif inp[1] == "DELETE":
-                key = int(inp[2])
+                key = inp[2]
                 if key in boards:
                     del boards[key] 
                 else:
@@ -143,7 +143,13 @@ def main():
                 elif inp[2] == "UNASSIGN":
                     boards[i].list[listId].cards[cardId].unAssUser()
 
-                else:       #"MOVE:"
+                elif inp[2] == "name":
+                    boards[i].list[listId].cards[cardId].setName(inp[3])
+
+                elif inp[2] == "description":
+                    boards[i].list[listId].cards[cardId].setDescription(inp[3])
+
+                elif inp[2] == "MOVE":       
                     cardObj = boards[i].list[listId].cards[cardId]   #get the card object
                     boards[i].list[listId].deleteCard(cardId)    #delete card object
                     targList = inp[3]
@@ -154,7 +160,9 @@ def main():
                             k=1       
                             break
                     if not k:
-                        print("board or list not found\n")
+                        print("list not found\n")
+
+                else : print("invalid command")
 
 
                     
@@ -173,21 +181,29 @@ def main():
             elif inp[1] == "BOARD":
                 if inp[2] in boards:
                     boards[inp[2]].displayBoard()
+                else: print("board does not exist")
 
             elif inp[1] == "LIST":
+                k=0
                 for i in boards:
                     if boards[i].isList(inp[2]):
                         boards[i].list[inp[2]].displayList()
+                        k=1
                         break
+                if not k:
+                    print("List does not exist")
             
             elif inp[1] == "CARD":
                 k=0
+                cardId = inp[2]
                 for i in boards:
                     if boards[i].isCard(cardId) != -1:
                         listId = boards[i].isCard(cardId)
-                        boards[i].list[k].cards[inp[2]].displayCards()
+                        boards[i].list[listId].cards[cardId].displayCards()
                         k=1
                         break
+                if not k:
+                    print("card does not exist")
 
 
         else:
